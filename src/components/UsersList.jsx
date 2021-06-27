@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getData } from '../utils/api'
 
-const UsersList = () => {
-  const [usersListIndex, setUsersListIndex] = useState(0);
+const UsersList = ({currentUser, setUser }) => {
   const [users, setUsers] = useState([]);
-  const user = users[usersListIndex];
 
   useEffect(() => {
     getData("http://localhost:3001/users").then((users) => setUsers(users));
@@ -18,18 +16,18 @@ const UsersList = () => {
         {users.map((user, i) => (
           <li
             key={user.id}
-            className={i === usersListIndex ? "selected" : null}
+            className={user.id === currentUser.id ? "selected" : null}
           >
-            <button className="btn" onClick={() => setUsersListIndex(i)}>
-              {user.title}
+            <button className="btn" onClick={() => setUser(user)}>
+              {user.name}
             </button>
           </li>
         ))}
       </ul>
-      {user && (
+      {currentUser && (
         <div>
-          <p>{user.name}</p>
-          <p>{user.title}</p>
+          <p>{currentUser.name}</p>
+          <p>{currentUser.title}</p>
         </div>
       )}
     </div>

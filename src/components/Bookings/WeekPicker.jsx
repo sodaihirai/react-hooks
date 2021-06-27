@@ -24,7 +24,7 @@ export default function WeekPicker({ dispatch }) {
             type="text"
             ref={textBoxRef}
             placeholder="e.g. 2020-09-02"
-            defaultValue="2021-06-05"
+            defaultValue="2020-06-22"
           />
           <button onClick={setDateByText}>go</button>
 

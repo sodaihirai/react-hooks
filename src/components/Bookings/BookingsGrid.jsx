@@ -23,7 +23,6 @@ const BookingsGrid = ({ week, bookable, booking, setBooking }) => {
     getBookings(bookable.id, week.start, week.end)
       .then((resp) => {
         if (doUpdate) {
-          console.log(resp)
           setBookings(transformBookings(resp));
         }
       })
