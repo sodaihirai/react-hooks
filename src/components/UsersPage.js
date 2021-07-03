@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import UsersList from './UsersList'
-import UserContext from './Users/UserContext'
+import { useUser } from './Users/UserContext'
 
 export default function UserPage () {
   const [user, setUser] = useState(null)
-  const loggedInUser = useContext(UserContext)
+  const [loggedInUser] = useUser()
   const currentUser = user || loggedInUser
 
   return (

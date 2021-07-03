@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { getData } from "../utils/api";
-import UserContext, { UserSetContext } from "./Users/UserContext";
+import { useUser } from "./Users/UserContext";
 
 export default function UserPicker() {
   const [users, setUsers] = useState(null);
 
-  const user = useContext(UserContext)
-  const setUser = useContext(UserSetContext)
+  const [user, setUser] = useUser()
 
   useEffect(() => {
     getData("http://localhost:3001/users")

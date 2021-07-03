@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FaEdit } from "react-icons/fa";
 import Booking from "./Booking";
-import UserContext from '../Users/UserContext'
+import { useUser } from '../Users/UserContext'
 
 const BookingsDetails = ({ booking, bookable }) => {
-  const user = useContext(UserContext)
+  const [user]  = useUser()
 
   const isBooker = user && booking && user.id === booking.bookerId
 
